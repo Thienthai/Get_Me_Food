@@ -37,8 +37,6 @@ public class Fd_Detail extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         db_ref = db.getReference("Foods");
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse);
-
         btn_Cart = (FloatingActionButton) findViewById(R.id.buyBtn);
         nmb_Btn = (ElegantNumberButton) findViewById(R.id.num_btn);
         fd_description = (TextView) findViewById(R.id.fd_description);
@@ -61,8 +59,6 @@ public class Fd_Detail extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MyFood fd = dataSnapshot.getValue(MyFood.class);
                 Picasso.with(getBaseContext()).load(fd.getImage()).into(fd_img);
-
-                collapsingToolbarLayout.setTitle(fd.getName());
                 fd_price.setText(fd.getPrice());
                 fd_name.setText(fd.getName());
                 fd_description.setText(fd.getDescription());
