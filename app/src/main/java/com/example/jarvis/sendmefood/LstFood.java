@@ -1,5 +1,6 @@
 package com.example.jarvis.sendmefood;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,7 +54,7 @@ public class LstFood extends AppCompatActivity {
     private void getListFood(String catID) {
         adapter = new FirebaseRecyclerAdapter<MyFood, FdViewHld>(MyFood.class,R.layout.food_itm,FdViewHld.class,db_rf.orderByChild("MenuId").equalTo(catID)) {
             @Override
-            protected void populateViewHolder(FdViewHld viewHolder, MyFood model, int position) {
+            protected void populateViewHolder(FdViewHld viewHolder, MyFood model, final int position) {
                 viewHolder.fd_name.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.fd_image);
                 final MyFood locate = model;
@@ -61,7 +62,9 @@ public class LstFood extends AppCompatActivity {
                     @Override
                     public void onClick(int Pos, View view, boolean isClck) {
                         Log.d("TAG","CLICKCLICKCLICKCLICKCLICKCLICKCLICK");
-                        Toast.makeText(LstFood.this,""+locate.getName(),Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LstFood.this,Fd_Detail.class);
+                        intent.putExtra("Fd_ID",adapter.getRef(position).getKey());
+                        startActivity(intent);
                     }
                 });
             }
