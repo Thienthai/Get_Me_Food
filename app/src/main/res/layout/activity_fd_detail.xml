@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3b3a3a"
     tools:context=".Fd_Detail">
 
     <android.support.design.widget.AppBarLayout
@@ -32,10 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="13dp"
-        android:layout_marginTop="147dp"
-        android:backgroundTint="@android:color/white"
-        android:src="@drawable/ic_build_black_24dp"
+        android:layout_marginTop="247dp"
+        android:backgroundTint="#566adc"
+        android:src="@drawable/ic_add_black_24dp"
         app:elevation="6dp"
         app:layout_anchor="@id/app_hd_layout"
         app:layout_anchorGravity="bottom|right|end"
@@ -46,14 +46,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="198dp"
+        android:layout_below="@+id/app_hd_layout"
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="#595959"
             app:cardElevation="4dp"
             app:cardUseCompatPadding="true">
 
@@ -69,7 +69,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:text="My Food"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#d2d1d1"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                         android:layout_marginTop="7dp"
                         android:layout_weight="8"
                         android:text="2,000"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="#d2d1d1"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -107,31 +107,23 @@
                     android:layout_marginBottom="18dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
-                    app:backGroundColor="@color/colorAccent"
+                    app:backGroundColor="#3d3c3c"
                     app:finalNumber="20"
                     app:initialNumber="1"
                     app:textSize="8sp" />
 
+                <TextView
+                    android:id="@+id/fd_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="12dp"
+                    android:text="Description"
+                    android:textColor="#bcbaba"
+                    android:textSize="14sp" />
+
             </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/fd_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:lineSpacingMultiplier="1.5"
-                android:padding="12dp"
-                android:text="Description"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
 
         </android.support.v7.widget.CardView>
 

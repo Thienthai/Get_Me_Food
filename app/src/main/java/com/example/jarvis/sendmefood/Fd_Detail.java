@@ -5,11 +5,15 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.jarvis.sendmefood.Databases.Databases;
 import com.example.jarvis.sendmefood.Model.MyFood;
+import com.example.jarvis.sendmefood.Model.Orders;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,15 +33,18 @@ public class Fd_Detail extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference db_ref;
 
+    MyFood fd_currnt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fd__detail);
+        setContentView(R.layout.activity_fd_detail);
 
         db = FirebaseDatabase.getInstance();
         db_ref = db.getReference("Foods");
 
         btn_Cart = (FloatingActionButton) findViewById(R.id.buyBtn);
+
         nmb_Btn = (ElegantNumberButton) findViewById(R.id.num_btn);
         fd_description = (TextView) findViewById(R.id.fd_description);
         fd_price = (TextView) findViewById(R.id.fd_price);
@@ -51,17 +58,26 @@ public class Fd_Detail extends AppCompatActivity {
             detailFood(food_ID);
         }
 
+        btn_Cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Databases(getBaseContext()).addFood(new Orders(food_ID, fd_currnt.getName(), nmb_Btn.getNumber(),fd_currnt.getPrice(),fd_currnt.getDescription()));
+
+                Toast.makeText(Fd_Detail.this,"Add orders complete",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void detailFood(String food_id) {
         db_ref.child(food_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                MyFood fd = dataSnapshot.getValue(MyFood.class);
-                Picasso.with(getBaseContext()).load(fd.getImage()).into(fd_img);
-                fd_price.setText(fd.getPrice());
-                fd_name.setText(fd.getName());
-                fd_description.setText(fd.getDescription());
+                fd_currnt = dataSnapshot.getValue(MyFood.class);
+                Picasso.with(getBaseContext()).load(fd_currnt.getImage()).into(fd_img);
+                fd_price.setText(fd_currnt.getPrice());
+                fd_name.setText(fd_currnt.getName());
+                fd_description.setText(fd_currnt.getDescription());
             }
 
             @Override

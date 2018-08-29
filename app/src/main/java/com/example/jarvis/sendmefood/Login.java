@@ -55,6 +55,7 @@ public class Login extends AppCompatActivity {
 
                             dialg.dismiss();
                             User usr = dataSnapshot.child(number.getText().toString()).getValue(User.class);
+                            usr.setNumber(number.getText().toString());
                             if (usr.getPassword().equals(passwords.getText().toString())) {
                                 Intent intent = new Intent(Login.this,Home.class);
                                 Current.usrCurrent = usr;
