@@ -29,7 +29,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".LstFood" />
         <activity android:name=".Fd_Detail" />
-        <activity android:name=".Order_Board"></activity>
+        <activity android:name=".Order_Board" />
+        <activity android:name=".StatusOrdr"></activity>
     </application>
 
 </manifest>

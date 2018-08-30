@@ -87,7 +87,8 @@ public class Order_Board extends AppCompatActivity {
                         addrs.getText().toString(),
                         totalPrice.getText().toString(),
                         orders,
-                        Current.usrCurrent.getName()
+                        Current.usrCurrent.getName(),
+                        "0"
                 );
 
                 db_ref.child(String.valueOf(System.currentTimeMillis())).setValue(rq);

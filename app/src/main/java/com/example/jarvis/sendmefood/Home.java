@@ -52,14 +52,14 @@ public class Home extends AppCompatActivity
         db = FirebaseDatabase.getInstance();
         db_ref = db.getReference("Categories");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.order_window);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this,Order_Board.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.order_window);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Home.this,Order_Board.class);
+//                startActivity(intent);
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -141,12 +141,19 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cart) {
-            // Handle the camera action
+            Intent intent = new Intent(Home.this,Order_Board.class);
+            startActivity(intent);
         } else if (id == R.id.nav_orders) {
+            Intent intent = new Intent(Home.this,StatusOrdr.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_menu) {
 
         } else if (id == R.id.sign_out) {
+
+            Intent intent = new Intent(Home.this,Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
 
         }
 

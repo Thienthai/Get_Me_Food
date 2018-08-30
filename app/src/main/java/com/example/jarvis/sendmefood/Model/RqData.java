@@ -7,17 +7,27 @@ public class RqData {
     private String address;
     private String sum;
     private List<Orders> orders;
+    private String status;
     private String name;
 
     public RqData() {
     }
 
-    public RqData(String numbers, String address, String sum, List<Orders> orders, String name) {
+    public RqData(String numbers, String address, String sum, List<Orders> orders, String name,String status) {
         this.numbers = numbers;
         this.address = address;
         this.sum = sum;
         this.orders = orders;
         this.name = name;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNumbers() {
