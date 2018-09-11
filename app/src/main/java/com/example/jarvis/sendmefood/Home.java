@@ -22,6 +22,7 @@ import com.example.jarvis.sendmefood.Current.Current;
 import com.example.jarvis.sendmefood.Interface.ListenerClck;
 import com.example.jarvis.sendmefood.MenuHld.ViewHld;
 import com.example.jarvis.sendmefood.Model.Categories;
+import com.example.jarvis.sendmefood.Service.OrderTrig;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -84,6 +85,9 @@ public class Home extends AppCompatActivity
         recycler_menu.setLayoutManager(layoutManager);
 
         mnLoad();
+
+        Intent intent = new Intent(Home.this, OrderTrig.class);
+        startService(intent);
 
 
     }

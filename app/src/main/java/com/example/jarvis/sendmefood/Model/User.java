@@ -4,6 +4,7 @@ public class User {
     private String Name;
     private String Password;
     private String Number;
+    private String IsStaff;
 
     public User() {
 
@@ -13,6 +14,15 @@ public class User {
         this.Name = name;
         this.Password = psswd;
         this.Number = number;
+        this.IsStaff = "false";
+    }
+
+    public String getIsStaff() {
+        return IsStaff;
+    }
+
+    public void setIsStaff(String isStaff) {
+        IsStaff = isStaff;
     }
 
     public String getNumber() {
