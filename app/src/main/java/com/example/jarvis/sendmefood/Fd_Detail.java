@@ -61,7 +61,7 @@ public class Fd_Detail extends AppCompatActivity {
         btn_Cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Databases(getBaseContext()).addFood(new Orders(food_ID, fd_currnt.getName(), nmb_Btn.getNumber(),fd_currnt.getPrice(),fd_currnt.getDescription()));
+                new Databases(getBaseContext()).addFood(new Orders(food_ID, fd_currnt.getName(), nmb_Btn.getNumber(),fd_currnt.getPrice(),fd_currnt.getDiscount()));
 
                 Toast.makeText(Fd_Detail.this,"Add orders complete",Toast.LENGTH_SHORT).show();
             }

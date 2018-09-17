@@ -52,7 +52,7 @@ public class LstFood extends AppCompatActivity {
     }
 
     private void getListFood(String catID) {
-        adapter = new FirebaseRecyclerAdapter<MyFood, FdViewHld>(MyFood.class,R.layout.food_itm,FdViewHld.class,db_rf.orderByChild("MenuId").equalTo(catID)) {
+        adapter = new FirebaseRecyclerAdapter<MyFood, FdViewHld>(MyFood.class,R.layout.food_itm,FdViewHld.class,db_rf.orderByChild("menuId").equalTo(catID)) {
             @Override
             protected void populateViewHolder(FdViewHld viewHolder, MyFood model, final int position) {
                 viewHolder.fd_name.setText(model.getName());
