@@ -6,16 +6,36 @@ public class Orders {
     private String Qntity;
     private String Price;
     private String Discnt;
+    private String Status;
+    private String Owner;
 
     public Orders() {
     }
 
-    public Orders(String prodId, String prodName, String qntity, String price, String discnt) {
+    public Orders(String prodId, String prodName, String qntity, String price, String discnt,String status,String owner) {
         ProdId = prodId;
         ProdName = prodName;
         Qntity = qntity;
         Price = price;
         Discnt = discnt;
+        Status = status;
+        Owner = owner;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public String getOwner() {
+        return Owner;
+    }
+
+    public void setOwner(String owner) {
+        Owner = owner;
     }
 
     public String getProdId() {

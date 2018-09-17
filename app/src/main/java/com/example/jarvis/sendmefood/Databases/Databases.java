@@ -14,13 +14,13 @@ import java.util.List;
 public class Databases extends SQLiteAssetHelper {
 
     public Databases(Context context) {
-        super(context, "SendMeFood.db",null, 1);
+        super(context, "mydb2.db",null, 1);
     }
 
     public List<Orders> getFood(){
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder query = new SQLiteQueryBuilder();
-        String[] select = {"ProdId","ProdName","Qntity","Price","Discnt"};
+        String[] select = {"ProdId","ProdName","Qntity","Price","Discnt","Status","Owner"};
         String table = "Order_Detail";
         query.setTables(table);
 
@@ -32,7 +32,9 @@ public class Databases extends SQLiteAssetHelper {
                         cur.getString(cur.getColumnIndex("ProdName")),
                         cur.getString(cur.getColumnIndex("Qntity")),
                         cur.getString(cur.getColumnIndex("Price")),
-                        cur.getString(cur.getColumnIndex("Discnt"))
+                        cur.getString(cur.getColumnIndex("Discnt")),
+                        cur.getString(cur.getColumnIndex("Status")),
+                        cur.getString(cur.getColumnIndex("Owner"))
                         ));
             }while(cur.moveToNext());
         }
@@ -47,8 +49,8 @@ public class Databases extends SQLiteAssetHelper {
 
     public void addFood(Orders orders){
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("Insert INTO Order_Detail(ProdId,ProdName,Qntity,Price,Discnt) VALUES('%s','%s','%s','%s','%s');",
-                orders.getProdId(),orders.getProdName(),orders.getQntity(),orders.getPrice(),orders.getDiscnt());
+        String query = String.format("Insert INTO Order_Detail(ProdId,ProdName,Qntity,Price,Discnt,Status,Owner) VALUES('%s','%s','%s','%s','%s','%s','%s');",
+                orders.getProdId(),orders.getProdName(),orders.getQntity(),orders.getPrice(),orders.getDiscnt(),orders.getStatus(),orders.getOwner());
         db.execSQL(query);
     }
 }
