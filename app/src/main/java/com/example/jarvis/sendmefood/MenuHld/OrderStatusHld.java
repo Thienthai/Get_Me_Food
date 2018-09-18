@@ -2,6 +2,7 @@ package com.example.jarvis.sendmefood.MenuHld;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.jarvis.sendmefood.Interface.ListenerClck;
@@ -13,6 +14,8 @@ public class OrderStatusHld extends RecyclerView.ViewHolder implements View.OnCl
 
     ListenerClck listenerClck;
 
+    public Button btn_detail;
+
     public OrderStatusHld(View itemView) {
         super(itemView);
 
@@ -20,6 +23,7 @@ public class OrderStatusHld extends RecyclerView.ViewHolder implements View.OnCl
         order_status = itemView.findViewById(R.id.order_item_stat);
         order_phone = itemView.findViewById(R.id.order_status_phone);
         order_address = itemView.findViewById(R.id.order_stat_address);
+        btn_detail = itemView.findViewById(R.id.order_detail_btn);
 
         itemView.setOnClickListener(this);
     }

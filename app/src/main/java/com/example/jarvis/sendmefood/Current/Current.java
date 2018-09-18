@@ -1,9 +1,12 @@
 package com.example.jarvis.sendmefood.Current;
 
+import com.example.jarvis.sendmefood.Model.RqData;
 import com.example.jarvis.sendmefood.Model.User;
 
 public class Current {
     public static User usrCurrent;
+
+    public static RqData currentRqData;
 
     public static String statusCode(String code){
         if(code.equals("0")){

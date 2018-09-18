@@ -1,11 +1,14 @@
 package com.example.jarvis.sendmefood;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.jarvis.sendmefood.Current.Current;
+import com.example.jarvis.sendmefood.Interface.ListenerClck;
 import com.example.jarvis.sendmefood.MenuHld.OrderStatusHld;
 import com.example.jarvis.sendmefood.Model.RqData;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -47,11 +50,19 @@ public class StatusOrdr extends AppCompatActivity {
                 db_ref.orderByChild("numbers").equalTo(number)
         ) {
             @Override
-            protected void populateViewHolder(OrderStatusHld viewHolder, RqData model, int position) {
+            protected void populateViewHolder(OrderStatusHld viewHolder, final RqData model, final int position) {
                 viewHolder.order_id.setText(adapter.getRef(position).getKey());
                 viewHolder.order_status.setText(stat(model.getStatus()));
                 viewHolder.order_address.setText(model.getAddress());
                 viewHolder.order_phone.setText(model.getNumbers());
+                viewHolder.btn_detail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(StatusOrdr.this,DetialOrderList.class);
+                        Current.currentRqData = model;
+                        startActivity(intent);
+                    }
+                });
             }
         };
 
