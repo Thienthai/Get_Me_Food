@@ -31,7 +31,7 @@ class MyViewHld extends RecyclerView.ViewHolder{
     }
 }
 
-public class OrderDetailAdapter extends RecyclerView.Adapter<MyViewHld> {
+public class  OrderDetailAdapter extends RecyclerView.Adapter<MyViewHld> {
 
     List<Orders> myOrders;
 

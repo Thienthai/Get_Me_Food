@@ -9,6 +9,7 @@ public class RqData {
     private List<Orders> orders;
     private String status;
     private String name;
+    private String key;
 
     public RqData() {
     }
@@ -20,6 +21,14 @@ public class RqData {
         this.orders = orders;
         this.name = name;
         this.status = status;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getStatus() {

@@ -11,6 +11,7 @@ import android.view.View;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.jarvis.sendmefood.Current.Current;
 import com.example.jarvis.sendmefood.Interface.ListenerClck;
+import com.example.jarvis.sendmefood.MenuHld.LstFoodHld;
 import com.example.jarvis.sendmefood.MenuHld.OrderDetailAdapter;
 import com.example.jarvis.sendmefood.Model.Orders;
 import com.example.jarvis.sendmefood.Model.RqData;
@@ -22,20 +23,58 @@ public class DetialOrderList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    FirebaseRecyclerAdapter<Orders,LstFoodHld> adapter;
+
+    FirebaseDatabase db;
+    DatabaseReference db_ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detial_order_list);
+        db = FirebaseDatabase.getInstance();
+        db_ref = db.getReference("Requests").child(Current.currentRqData.getKey()).child("orders");
 
         recyclerView = (RecyclerView) findViewById(R.id.detailOrderList);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+//
+//        OrderDetailAdapter adapter = new OrderDetailAdapter(Current.currentRqData.getOrders());
+//        adapter.notifyDataSetChanged();
+//        recyclerView.setAdapter(adapter);
+        getOrder();
+    }
 
-        OrderDetailAdapter adapter = new OrderDetailAdapter(Current.currentRqData.getOrders());
+    private void getOrder() {
+        adapter = new FirebaseRecyclerAdapter<Orders, LstFoodHld>(
+                Orders.class,
+                R.layout.order_detail_list,
+                LstFoodHld.class,
+                db_ref
+        ) {
+            @Override
+            protected void populateViewHolder(LstFoodHld viewHolder, Orders model, int position) {
+                viewHolder.Price.setText(String.format("Price: $%s",model.getPrice()));
+                viewHolder.Qantity.setText(String.format("Quantity: %s",model.getQntity()));
+                viewHolder.Status.setText(String.format("Status: %s",statusCode(model.getStatus())));
+                viewHolder.Name.setText(model.getProdName());
+            }
+        };
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+
+
+    }
+
+    public static String statusCode(String code){
+        if(code.equals("0")){
+            return "your order is placed";
+        }else if(code.equals("1")){
+            return "your order is on the way";
+        }else{
+            return "your order is already shipped";
+        }
     }
 
 }

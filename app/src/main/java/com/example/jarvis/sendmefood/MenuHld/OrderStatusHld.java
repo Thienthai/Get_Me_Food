@@ -14,7 +14,7 @@ public class OrderStatusHld extends RecyclerView.ViewHolder implements View.OnCl
 
     ListenerClck listenerClck;
 
-    public Button btn_detail;
+    public Button btn_detail,cmplt_ordr;
 
     public OrderStatusHld(View itemView) {
         super(itemView);
@@ -24,6 +24,8 @@ public class OrderStatusHld extends RecyclerView.ViewHolder implements View.OnCl
         order_phone = itemView.findViewById(R.id.order_status_phone);
         order_address = itemView.findViewById(R.id.order_stat_address);
         btn_detail = itemView.findViewById(R.id.order_detail_btn);
+        cmplt_ordr = itemView.findViewById(R.id.complete_order);
+
 
         itemView.setOnClickListener(this);
     }
