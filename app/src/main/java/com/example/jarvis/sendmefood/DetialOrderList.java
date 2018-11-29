@@ -59,6 +59,7 @@ public class DetialOrderList extends AppCompatActivity {
                 viewHolder.Qantity.setText(String.format("Quantity: %s",model.getQntity()));
                 viewHolder.Status.setText(String.format("Status: %s",statusCode(model.getStatus())));
                 viewHolder.Name.setText(model.getProdName());
+                viewHolder.Owner.setText(String.format("Phone: %s",model.getOwner()));
             }
         };
         adapter.notifyDataSetChanged();

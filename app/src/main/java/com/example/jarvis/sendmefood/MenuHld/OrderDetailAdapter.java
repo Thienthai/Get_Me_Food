@@ -17,7 +17,7 @@ import java.util.List;
 
 class MyViewHld extends RecyclerView.ViewHolder{
 
-    public TextView name,price,status;
+    public TextView name,price,status,owner;
 
     public ImageView qntity;
 
@@ -28,6 +28,7 @@ class MyViewHld extends RecyclerView.ViewHolder{
         price = (TextView) itemView.findViewById(R.id.order_detail_item_price);
         status = (TextView) itemView.findViewById(R.id.order_detail_item_status);
         qntity = (ImageView) itemView.findViewById(R.id.order_detail_item_qntity);
+        owner = (TextView) itemView.findViewById(R.id.order_detail_item_phone);
     }
 }
 
@@ -52,6 +53,7 @@ public class  OrderDetailAdapter extends RecyclerView.Adapter<MyViewHld> {
         Orders orders = myOrders.get(position);
         holder.name.setText(String.format("Name: %s",orders.getProdName()));
         holder.price.setText(String.format("Price: %s",orders.getPrice()));
+        holder.owner.setText(String.format("Phone: %s ",orders.getOwner()));
         holder.status.setText(String.format("Status: %s",stat(orders.getStatus())));
         TextDrawable drawable = TextDrawable.builder().buildRound(""+orders.getQntity(), Color.RED);
         holder.qntity.setImageDrawable(drawable);

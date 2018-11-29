@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.example.jarvis.sendmefood.R;
 
 public class LstFoodHld extends RecyclerView.ViewHolder{
-    public TextView Name,Price,Status,Qantity;
+    public TextView Name,Price,Status,Qantity,Owner;
 
 
     public LstFoodHld(View itemView) {
@@ -18,5 +18,6 @@ public class LstFoodHld extends RecyclerView.ViewHolder{
         Price = (TextView) itemView.findViewById(R.id.order_detail_item_price);
         Status = (TextView) itemView.findViewById(R.id.order_detail_item_status);
         Qantity = (TextView) itemView.findViewById(R.id.order_myquantity);
+        Owner = (TextView) itemView.findViewById(R.id.order_detail_item_phone);
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#201f1f"
+    android:background="#efeaea"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_width="299dp"
             android:layout_height="wrap_content"
             android:text="Send Me Food  !!"
-            android:textColor="#d25f3c"
+            android:textColor="#274f8f"
             android:textSize="90sp"
             android:textStyle="bold"
             app:fontFamily="@font/aladin" />
